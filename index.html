@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>Draggable, droppable, and sortable list (2.0)</title>
+
+
+    <script type='text/javascript' src='./js/lib/jquery-1.9.1.js'></script>
+    <script type="text/javascript" src="./js/lib/jquery-ui.js"></script>
+    <script type='text/javascript' src="./js/lib/knockout-3.4.0.js"></script>
+    <script type='text/javascript' src="./js/lib/knockout-sortable.min.js"></script>
+
+    <link rel="stylesheet" href="./css/index.css" />
+    <link rel="stylesheet" href="./css/bootstrap.css" />
+
+</head>
+<body>
+
+    <div class="container">
+    
+        <h1>My Tasks</h1>
+        <div class="row">
+            <div class="col-md-2">
+                 <!-- ko component: {name: 'my-new-tasks', params: { tasks: newTasks1}} --><!-- /ko -->                
+            </div>
+            <div class="col-md-8">
+                 <!-- ko component: {name: 'my-current-tasks', params: { tasks: currentTasks}} --><!-- /ko -->
+            </div>
+            <div class="col-md-2">
+                 <!-- ko component: {name: 'my-new-tasks', params: { tasks: newTasks2}} --><!-- /ko -->                
+            </div>
+        </div>
+
+        <!-- template for each list item -->
+        <script type="text/html" id="manage-task-buttons-template">
+            <button data-bind="click: function(){ $root.deleteTaskByGUID(task.guid); }" class="btn-manage-task-items  btn btn-danger pull-right">
+                <span class="">X</span>
+            </button>                                     
+            <button data-bind="click: function(){ $root.addToCurrentTasks(task); }" class="btn-manage-task-items  btn btn-success pull-right">
+                <span class="">Copy</span>
+            </button>
+            <button data-bind="click: function(){ console.log('swap views to editthis control!'); }" class="btn-manage-task-items  btn btn-primary pull-right">
+                <span class="">Edit</span>
+            </button>
+        </script>
+        
+    </div>
+    
+    <script type='text/javascript' src="js/components.js"></script>
+    <script type='text/javascript' src="js/index.js"></script>
+
+</body>
+</html>
+
